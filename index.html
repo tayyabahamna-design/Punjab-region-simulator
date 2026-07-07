@@ -16,7 +16,7 @@
 <style>
   :root{
     --bg:#0B0F2A; --card:#141B3D; --card2:#1A2247; --border:rgba(255,255,255,0.08);
-    --pink:#E6A8F0; --purple:#A78BFA; --text:#F2F0FA; --subtext:#9AA3C7;
+    --pink:#D8C9A0; --purple:#D9B65B; --text:#F2F0FA; --subtext:#9AA3C7;
     --wa-bg:#0B0F10; --wa-header:#171B1C; --wa-incoming:#1F2426; --wa-outgoing:#0B4A3B;
     --wa-text:#ECEFF0; --wa-subtext:#8A9296; --wa-accent:#25D366; --wa-link:#4FC3F7;
   }
@@ -47,7 +47,7 @@
   .tw-toggle .knob { position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:999px; background:#fff; transition:left .2s ease; }
   .tw-toggle.on .knob { left:20px; }
   .chapter-pill { transition: background .15s ease, color .15s ease; }
-  .chapter-pill.active { background:#F0972E !important; color:#1A1300 !important; }
+  .chapter-pill.active { background:#D9B65B !important; color:#1A1300 !important; }
   .sheet-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.55); display:flex; align-items:flex-end; z-index:30; }
   .sheet-panel { width:100%; background:#1c1c1e; border-radius:20px 20px 0 0; padding:10px 16px 16px; max-height:92%; overflow-y:auto; }
   .sheet-grabber { width:36px; height:4px; border-radius:4px; background:#48484a; margin:0 auto 10px; }
@@ -63,13 +63,16 @@
 
   <!-- ================= MENU VIEW ================= -->
   <div id="view-menu">
-    <div class="text-center mb-10 max-w-2xl mx-auto">
+    <div class="text-center mb-8 max-w-2xl mx-auto">
       <p class="text-xs tracking-widest font-bold" style="color:var(--pink);">Q2 2026 · RAWALPINDI DISTRICT</p>
+      <p class="text-sm font-semibold mt-3" style="color:var(--purple);">Presented to the Respected Education Minister of Punjab</p>
       <h1 class="text-3xl font-extrabold mt-2" style="color:var(--text);">TaleemHub &amp; RUMI</h1>
+      <p class="text-xs font-semibold mt-1.5 tracking-wide" style="color:var(--subtext);">Presented by Taleemabad</p>
       <p class="text-sm mt-3" style="color:var(--subtext);">
         The problem, the solution, then RUMI in action for AEOs, teachers, and students. Click any step to open its real simulation.
       </p>
     </div>
+
 
     <div class="flex flex-col gap-3 max-w-2xl mx-auto" id="menu-list">
       <!-- cards injected by JS -->
@@ -328,8 +331,8 @@ function renderEditableSlide(n){
       "",
     ],
   };
-  const accents = { 11:"#A78BFA", 12:"#E6A8F0", 13:"#7BE6B0" };
-  const accent = accents[n] || "#A78BFA";
+  const accents = { 11:"#D9B65B", 12:"#C9A455", 13:"#E8D9B0" };
+  const accent = accents[n] || "#D9B65B";
   const defaultTitle = defaultTitles[n] || "";
   const stat = defaultStats[n];
   const get = (key, fallback) => {
@@ -488,47 +491,20 @@ const BEFORE_CHIPS = [
 
 function renderProblemSolution(){
   return `
-  <div class="max-w-3xl mx-auto text-center">
-    <p class="text-xs font-bold tracking-wide" style="color:var(--pink);">STEP 1 · THE STORY</p>
-    <h2 class="text-2xl font-extrabold mt-1 mb-6" style="color:var(--text);">From Chaos → One Record</h2>
+  <div class="max-w-3xl mx-auto">
+    <p class="text-xs font-bold tracking-wide text-center" style="color:var(--pink);">STEP 1 · THE STORY</p>
+    <h2 class="text-2xl font-extrabold mt-1 mb-1 text-center" style="color:var(--text);">From Chaos → One Record</h2>
+    <p class="text-xs font-semibold mb-8 text-center" style="color:var(--subtext);">RUMI (WhatsApp) ↔ TaleemHub (the record) — one engine, one record.</p>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <div class="flex gap-2">
-        ${BEFORE_CHIPS.map(c => `
-          <div class="rounded-xl px-3 py-3 flex flex-col items-center gap-1" style="background:var(--card); border:1px solid var(--border); width:88px;">
-            <span style="font-size:24px;">${c.icon}</span>
-            <span class="text-[10.5px] font-semibold" style="color:var(--subtext);">${c.label}</span>
-          </div>`).join("")}
-      </div>
-
-      <div class="flex flex-col items-center gap-1 px-2">
-        <button id="run-solution" class="flex items-center justify-center rounded-full pulse-ring" style="width:46px; height:46px; background:#7BE6B0;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#04201A"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <span class="text-[9.5px] font-bold" style="color:var(--subtext);">TAP</span>
-      </div>
-
-      <div class="rounded-xl px-4 py-3 flex items-center gap-3" style="background:#1E2A6B; border:1px solid var(--border);">
-        <span style="font-size:24px;">📲</span>
-        <div class="relative" style="width:26px; height:2px; background:rgba(255,255,255,0.25);">
-          <div id="solution-dot" class="hidden" style="position:absolute; top:-4px; width:8px; height:8px; border-radius:999px; background:#7BE6B0;"></div>
-        </div>
-        <span style="font-size:24px;">📊</span>
-      </div>
-    </div>
-
-    <p class="text-xs font-semibold mt-4" style="color:var(--text);">RUMI (WhatsApp) ↔ TaleemHub (the record) — one engine, one record.</p>
-    <p id="solution-log" class="text-xs mt-2 min-h-[18px]" style="color:var(--subtext);">Tap play to watch it sync.</p>
-
-    <p class="text-xs font-bold tracking-wide mt-8 mb-3" style="color:var(--pink);">TODAY, AT SCALE</p>
-    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+    <p class="text-xs font-bold tracking-wide mb-3" style="color:var(--pink);">THE PROGRAM</p>
+    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-8">
       ${[
         ["🏫","261","Schools"],
-        ["👥","1,396","Registered"],
-        ["📘","11,990","Lesson Plans"],
-        ["⭐","1,424","RUMI Users"],
-        ["🎥","2,170","Coach Obs."],
-        ["📄","233","ASER"],
+        ["🎓","15,000+","Students"],
+        ["📖","1,300+","Teachers"],
+        ["🧭","24","AEOs"],
+        ["🗂️","2","DEOs"],
+        ["🏛️","1","CEO"],
       ].map(([icon,num,label]) => `
         <div class="rounded-xl p-2.5" style="background:var(--card); border:1px solid var(--border);">
           <p style="font-size:16px;">${icon}</p>
@@ -536,7 +512,23 @@ function renderProblemSolution(){
           <p class="text-[9.5px]" style="color:var(--subtext);">${label}</p>
         </div>`).join("")}
     </div>
-    <p class="text-[11px] mt-3" style="color:var(--subtext);">1,423 staff · 1,136 Teachers · 260 Head Teachers · 24 AEOs · 2 DEOs · 1 DDEO</p>
+
+    <p class="text-xs font-bold tracking-wide mb-3" style="color:var(--pink);">RUMI &amp; TALEEMHUB, AT WORK</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+      ${[
+        ["📘","11,800+","Lesson Plans generated", "#D9B65B"],
+        ["🎥","1,985","Digital Coach observations", "#C9A455"],
+        ["⭐","1,345","RUMI users", "#E8D9B0"],
+        ["📚","260","Schools got summer homework via RUMI", "#B8935A"],
+      ].map(([icon,num,label,accent]) => `
+        <div class="rounded-xl p-3 relative overflow-hidden" style="background:var(--card); border:1px solid var(--border);">
+          <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, ${accent}, transparent);"></div>
+          <p style="font-size:18px;">${icon}</p>
+          <p class="text-xl font-extrabold mt-1" style="color:var(--text);">${num}</p>
+          <p class="text-[10px] mt-0.5" style="color:var(--subtext);">${label}</p>
+        </div>`).join("")}
+    </div>
+    <p class="text-[11px] mt-3 text-center" style="color:var(--subtext);">97% of teachers rated Lesson Plans useful · 83% rated summer homework useful</p>
   </div>`;
 }
 
